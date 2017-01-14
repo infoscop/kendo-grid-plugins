@@ -16,3 +16,10 @@ These plugins are distributed in the hope that they will be useful, but WITHOUT 
 All demos use the Kendo grid local data binding example, available at http://demos.telerik.com/kendo-ui/grid/local-data-binding, with minor modifications.
 
 Instructions will follow. Yet demos provided are easy to use.
+
+Demos are available as git pages:
+- all plugins: https://infoscop.github.io/kendo-grid-plugins/demo/demo.html
+- filter display: https://infoscop.github.io/kendo-grid-plugins/demo/demo_filter_display.html
+- filter input: https://infoscop.github.io/kendo-grid-plugins/demo/demo_filter_input.html
+- filter input and column menu: https://infoscop.github.io/kendo-grid-plugins/demo/demo_filter_input_and_column_menu.html
+- filter input and display: https://infoscop.github.io/kendo-grid-plugins/demo/demo_filter_input_and_display.html
