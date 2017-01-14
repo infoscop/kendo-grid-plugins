@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>html { font-size: 14px; font-family: Arial, Helvetica, sans-serif; }</style>
+    <title>Grid filtering</title>
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2016.3.1118/styles/kendo.material.mobile.min.css" />
+
+    <link rel="stylesheet" href="../demo.css" />
+
+    <script src="http://kendo.cdn.telerik.com/2016.3.1118/js/jquery.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/2016.3.1118/js/kendo.all.min.js"></script>
+
+    <script src="../demo.js"></script>
+    <script src="../items.js"></script>
+
+    <script src="../grid.column.menu.js"></script>
+    <script src="../grid.filter.input.js"></script>
+    <script src="../grid.filter.display.js"></script>
+</head>
+<body>
+        <div id="example">
+            <div id="grid"></div>
+            <script type="text/x-kendo-template" id="template">
+                <div class="toolbar">
+				    <div style="overflow:hidden; padding-left:3px">
+					    <div id="gridColumnMenu" class="grid-column-menu"></div>
+					    <div id="gridFilterInput" class="grid-filter-input"></div>
+					</div>
+					<div id="gridFilterDisplay" class="grid-filter-display"></div>
+                </div>
+            </script>
+
+            <script>
+                $(document).ready(function() {
+                    $("#grid").kendoGrid({
+                        dataSource: {
+                            data: items,
+                            schema: {
+                                model: {
+                                    fields: {
+                                        ItemName: { type: "string" },
+                                        UnitPrice: { type: "number" },
+                                        Discontinued: { type: "boolean" },
+                                        OrderDate: { type: "date" },
+                                        Discontinued: { type: "boolean" }
+                                    }
+                                }
+                            },
+                            pageSize: 20
+                        },
+                        height: 550,
+                        scrollable: true,
+                        sortable: true,
+                        filterable: true,
+                        pageable: {
+                            input: true,
+                            numeric: false
+                        },
+                        columns: [
+                            { field: "ItemName", title: "Item name" },
+                            { field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "130px" },
+                            { field: "OrderDate", title: "Order Date", width: "130px", format: "{0:dd/MM/yyyy}" },
+                            { field: "Discontinued", title: "Is discontinued", width: "130px" }
+                        ],
+                        toolbar: kendo.template($("#template").html())
+                    })
+                    .addGridColumnMenu(
+                        "gridColumnMenu"
+                    )
+                    .addGridFilterInput(
+                        "gridFilterInput",
+                        [
+                            { data: "ItemName", label: "Item name", input: "input", operators: ["contains", "doesnotcontain", "eq", "neq", "startswith", "endswith"] },
+                            { data: "UnitPrice", label: "Price per unit", input: "select" },
+                            { data: "OrderDate", label: "Date of order", input: "datePicker", operators: ["gt","lt"] },
+                            { data: "Discontinued", label: "Discontinued", input: "select" },
+                        ],
+                        rb,
+                        filterLists
+                    )
+                    .addGridFilterDisplay(
+                        "gridFilterDisplay",
+                        "gridFilterInput",
+                        rb
+                    );
+                });
+            </script>
+</div>
+
+
+</body>
+</html>
