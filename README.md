@@ -13,4 +13,6 @@ Provided plugins are free software: you can redistribute them and/or modify them
 
 These plugins are distributed in the hope that they will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details at http://www.gnu.org/licenses/.
 
+All demos use the Kendo grid local data binding example, available at http://demos.telerik.com/kendo-ui/grid/local-data-binding, with minor modifications.
+
 Instructions will follow. Yet demos provided are easy to use.
