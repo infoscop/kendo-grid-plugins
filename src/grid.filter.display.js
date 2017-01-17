@@ -36,7 +36,7 @@
                                             }
                                         } else {
                                             $.each(val.filters, function (i, v) {
-                                                if (v && v.field == unescape(field) && v.value == unescape(value)) {
+                                                if (v && v.field == unescape(field) && isEqual(v.value, value)) {
                                                     val.filters.splice(i, 1);
                                                     if (val.filters.length == 1) {
                                                         filter.filters[index] = val.filters[0];
@@ -46,7 +46,7 @@
                                             });
                                         }
                                     } else {
-                                        if (val.field == unescape(field) && (typeof value == 'undefined' || val.value == unescape(value))) {
+                                        if (val.field == unescape(field) && (typeof value == 'undefined' || isEqual(val.value, value))) {
                                             filter.filters.splice(index, 1);
                                             return false;
                                         }
@@ -153,7 +153,11 @@
                 }
 
                 return { value: value, isDate: false };
-            }
+            },
+
+            isEqual: function (val1, val2) {
+			    return val1 === false && val2 === "false" || val1 == unescape(val2);
+			}
         };
 
         if (!$("#" + id).length) return this;
