@@ -36,7 +36,7 @@
                                             }
                                         } else {
                                             $.each(val.filters, function (i, v) {
-                                                if (v && v.field == unescape(field) && isEqual(v.value, value)) {
+                                                if (v && v.field == unescape(field) && methods.isEqual(v.value, value)) {
                                                     val.filters.splice(i, 1);
                                                     if (val.filters.length == 1) {
                                                         filter.filters[index] = val.filters[0];
