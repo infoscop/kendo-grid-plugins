@@ -34,7 +34,7 @@
                         }
                     } else if (filter.field == field) {
                         if (add) {
-                            if (value && filter.value != value) {
+                            if ((value || value === false) && filter.value != value) {
                                 filters.splice(i, 1);
                                 filters.push({ logic: "or", filters: [filter, { field: field, operator: operator, value: value }] });
                             }
